@@ -13,7 +13,7 @@
 
 - Webhook events: `customer.subscription.*`, `invoice.*`
 - Customer portal: hosted by Stripe, link from Settings → Billing
-- Webhook URL must match prod hostname — see [[learnings#2026-04-28]] for the past incident
+- Webhook URL must match prod hostname — see `learnings.md` for the 2026-04-28 incident
 
 ## Dunning sequence
 
