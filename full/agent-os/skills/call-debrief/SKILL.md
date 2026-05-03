@@ -11,7 +11,7 @@ Extract structured decisions and action items from a call. Save them where they 
 
 - User pastes a call transcript
 - User drops an audio file path (.mp3, .wav, .m4a, .ogg)
-- User says: "call debrief", "call notes", "what was decided", "transcript", "разбери звонок"
+- User says: "call debrief", "call notes", "what was decided", "transcript" (or the equivalent phrase in the user's preferred language — see `agent-os/rules/language.md` if defined)
 
 ## Procedure
 

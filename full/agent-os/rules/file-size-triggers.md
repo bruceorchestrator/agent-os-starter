@@ -9,7 +9,7 @@ Per-change quality rules catch ugly diffs but miss long-term file growth. This r
 | Size of target file | Allowed action |
 |---|---|
 | < 500 lines | Edit freely |
-| 500–1000 lines | If the new code introduces a new concern (entry point / I/O / domain rule / external integration / AI orchestration / validation), say to the user: "`foo.py` уже N строк, growing into <new concern>. Split now or after this fix?" Wait for answer. |
+| 500–1000 lines | If the new code introduces a new concern (entry point / I/O / domain rule / external integration / AI orchestration / validation), say to the user: "`foo.py` is already N lines, growing into <new concern>. Split now or after this fix?" Wait for answer. |
 | 1000–2000 lines | NO new feature additions without explicit user approval. Bug fixes + small extensions to existing concerns OK. |
 | > 2000 lines | Stop. Split first, feature second. Refuse incremental additions until decomposition is agreed. |
 

@@ -16,7 +16,7 @@ Trigger reflexively when the user:
 - Pastes a large block of text (>200 words)
 - Sends a YouTube/video link
 - Sends a tweet, gist, or repo URL
-- Says: "ingest", "save this", "remember this", "add to memory", "проанализируй и сохрани"
+- Says: "ingest", "save this", "remember this", "add to memory" (or the equivalent phrase in the user's preferred language)
 
 Do NOT trigger for:
 

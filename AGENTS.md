@@ -52,10 +52,11 @@ agent-os-starter/
 ├── AGENTS.md                ← this file
 ├── CLAUDE.md                ← mirror of this file
 ├── LICENSE                  ← MIT
-├── starter/                 ← Simple Mode template (12 files)
-├── full/                    ← Advanced Mode template (~50 files)
-└── examples/acme-notes/     ← Reserved for richer worked examples (currently empty)
+├── starter/                 ← Simple Mode template (12 files, Acme Notes example)
+└── full/                    ← Advanced Mode template (~50 files, Acme Notes example)
 ```
+
+`starter/` and `full/` ARE the worked Acme Notes example — no separate `examples/` directory. Both modes contain the same fictional project at different complexity levels.
 
 ## When the user asks about the agent-os pattern
 
