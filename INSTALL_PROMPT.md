@@ -157,7 +157,7 @@ For each file in the chosen mode:
 - `PROJECT_MAP.md` — REPLACE with the user's actual stack and directory structure (this is critical; the source's `<!-- REPLACE WITH YOUR STACK -->` marker tells you exactly where)
 - `STATUS.md` — clear all Acme entries; write one fresh event line: `Agent created YYYY-MM-DD via agent-os install`
 - `MEMORY.md` — empty out Acme gotchas; leave header + "Empty until non-obvious gotchas are discovered."
-- `RULES.md` — review each rule. Generic rules (like "production migrations during low-traffic windows") apply universally; project-specific ones may need to be adapted. The rule about "Acme Notes traffic 02:00-06:00 UTC" was already genericized in the source — if you see leftover specifics, fix them.
+- `RULES.md` — review each rule. Generic rules (like "production migrations during low-traffic windows") apply universally; project-specific ones may need to be adapted. If you see leftover specifics from the bundled example, fix them.
 
 **`agent-os/rules/identity.md.template` and `language.md.template`:**
 - Leave as templates (don't rename to `.md`) unless user explicitly asks
@@ -171,12 +171,13 @@ For each file in the chosen mode:
 **Final cleanup after install — run a residue check:**
 
 ```bash
-grep -irE "acme notes|bluefin|tessera|maya chen|alex rivera" . --exclude-dir=.git
+grep -irE "acme notes|bluefin|tessera|maya( chen)?|alex( rivera)?" . --exclude-dir=.git
 ```
 
 After customization, this should return only:
 - Lines in `agent-os/agents/README.md` describing the bundled example (intentional)
 - Lines in `agent-os/rules/identity.md.template` "Filled-in example" section (intentional)
+- Lines containing Maya/Alex only if those are the user's real project names
 - Nothing else.
 
 If it returns more, you missed a customization step. Go back and fix.
