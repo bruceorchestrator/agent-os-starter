@@ -2,7 +2,7 @@
 
 > This is the schema document for the Acme Notes team wiki. It tells your AI agent how the wiki is structured, what conventions we use, and how to maintain it. Based on [Karpathy's LLM wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
 
-## If you are an AI agent installing this into an existing project
+## If you are an AI agent installing this into a project or knowledge workspace
 
 1. Copy this schema and the `memory/` layout into the target repo.
 2. Preserve existing project files — never overwrite or delete without asking the user first.

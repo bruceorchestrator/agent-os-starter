@@ -1,6 +1,6 @@
 # Install Prompt — agent-os-starter
 
-> **Read this carefully. You are an AI agent installing a memory + governance system into the user's existing project.**
+> **Read this carefully. You are an AI agent installing a memory + governance system into the user's project or knowledge workspace.**
 
 This document is the install procedure. Follow it step by step. Do not skip steps. Do not improvise.
 
@@ -31,7 +31,8 @@ Before installing, look at the current directory.
 
 2. **Personal knowledge wiki** — no project at all (note-taking, research, reading, learning, vision tracking, knowledge garden). This is closer to Karpathy's original use case.
    - Install **Simple Mode only** (`starter/`)
-   - Skip Steps 1 and 2 — there's no "project" to inspect or mode to choose
+   - Skip the project-inspection parts of Steps 1 and 2 — there's no codebase to inspect or mode to choose
+   - Still show a short Step 3 plan and wait for confirmation before writing files
    - In Step 4 customization: skip project/team/client/priority items entirely
    - Reframe `memory/STATE.md` from "Current State / Priorities" to **"Current Focus"** — what you're learning, exploring, or thinking about right now. No team table, no blockers, no priority levels — just a few bullets describing your current attention.
    - Keep all of: `wiki/`, `raw/`, `outputs/`, `daily/`, `learnings.md`, `AGENTS.md`/`CLAUDE.md`
