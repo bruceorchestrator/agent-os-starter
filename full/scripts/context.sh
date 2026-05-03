@@ -6,7 +6,7 @@
 # session at start, but works standalone too:
 #
 #   bash scripts/context.sh                    # all defaults
-#   bash scripts/context.sh bluefin-coffee     # include client file (clients/bluefin-coffee.md)
+#   bash scripts/context.sh <client-name>      # include client file (memory/clients/<client-name>.md)
 #
 # Output is plain text, not markdown — designed to be embedded in hook output.
 

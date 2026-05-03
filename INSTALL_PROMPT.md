@@ -142,16 +142,44 @@ For each file in the chosen mode:
 - Do NOT keep the Acme example spec or research output
 - Leave subdirectories empty (just `outputs/README.md` retained)
 
-**`agent-os/agents/backend-dev/` (Advanced only):**
-- Replace `PROJECT_MAP.md` content with the user's actual stack and directory structure
-- Empty `STATUS.md` (or write one event line: "Agent created today")
-- Empty `MEMORY.md`
-- Keep `RULES.md` as-is or adapt to user's actual rules
-- If the user doesn't need a backend-dev agent specifically, rename or skip
+**`AGENTS.md` and `CLAUDE.md` (root) — CRITICAL:**
+- Change line 1 title from `# Acme Notes — AI Agent Schema (...)` to `# <project-name> — AI Agent Schema (...)`
+- These files describe the schema for the user's project — they must use the user's project name everywhere
+- Search for any other "Acme Notes" mentions in body and either remove (if installer instructions) or replace with project name (if descriptive)
+- Both files have identical content — keep them in sync
+
+**`agent-os/agents/backend-dev.md` (Advanced only):**
+- Update the `description:` frontmatter field — currently says "for Acme Notes", replace with "for <project-name>" or just "for this project"
+- The system prompt now references `PROJECT_MAP.md` generically (no hardcoded Acme paths) — usually no edit needed, just verify
+- If renaming the agent (e.g. `backend-dev` → `backend` or `api-eng`), rename the `.md` file AND the state folder
+
+**`agent-os/agents/backend-dev/` state folder (Advanced only):**
+- `PROJECT_MAP.md` — REPLACE with the user's actual stack and directory structure (this is critical; the source's `<!-- REPLACE WITH YOUR STACK -->` marker tells you exactly where)
+- `STATUS.md` — clear all Acme entries; write one fresh event line: `Agent created YYYY-MM-DD via agent-os install`
+- `MEMORY.md` — empty out Acme gotchas; leave header + "Empty until non-obvious gotchas are discovered."
+- `RULES.md` — review each rule. Generic rules (like "production migrations during low-traffic windows") apply universally; project-specific ones may need to be adapted. The rule about "Acme Notes traffic 02:00-06:00 UTC" was already genericized in the source — if you see leftover specifics, fix them.
 
 **`agent-os/rules/identity.md.template` and `language.md.template`:**
 - Leave as templates (don't rename to `.md`) unless user explicitly asks
-- Mention these in the final summary as optional
+- These contain "Acme Notes" example sections intentionally — they're illustrative inside templates, do not remove
+- Mention as optional in the final summary
+
+**`scripts/context.sh`:**
+- Comment example uses `<client-name>` placeholder — no change needed
+- If you see any specific client name in examples, replace with `<client-name>` placeholder
+
+**Final cleanup after install — run a residue check:**
+
+```bash
+grep -irE "acme notes|bluefin|tessera|maya chen|alex rivera" . --exclude-dir=.git
+```
+
+After customization, this should return only:
+- Lines in `agent-os/agents/README.md` describing the bundled example (intentional)
+- Lines in `agent-os/rules/identity.md.template` "Filled-in example" section (intentional)
+- Nothing else.
+
+If it returns more, you missed a customization step. Go back and fix.
 
 ### Step 5 — Verify
 

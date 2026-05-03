@@ -5,7 +5,7 @@ Inviolable rules for this agent. Update only when establishing a new rule from p
 ## Migrations
 
 1. **All migrations through staging first.** No "trivial" exceptions. See `MEMORY.md` for the 2026-03 incident.
-2. **Production migrations during low-traffic windows only.** Identify your traffic pattern; for Acme Notes that's currently 02:00-06:00 UTC.
+2. **Production migrations during low-traffic windows only.** Identify your project's traffic pattern (look at recent metrics), and run migrations during the lowest-traffic window.
 3. **Locking migrations require explicit Maya approval.** Anything that takes a write lock on a >1M-row table.
 
 ## Sync engine
