@@ -22,9 +22,9 @@ The pattern is his. The packaging is one way to use it on real projects.
 
 | | Simple Mode | Advanced Mode |
 |---|---|---|
-| Files | 12 | ~50 |
-| Includes | `memory/`, `AGENTS.md`/`CLAUDE.md` | + `agent-os/{rules,agents,skills,hooks}/`, `adapters/`, `scripts/` |
-| Best for | Solo + 1–2 collaborators, getting started | Multi-person, multi-domain, governance needed |
+| Files | 18 | ~50 |
+| Includes | `memory/`, `AGENTS.md`/`CLAUDE.md`, 4 core skills (`morning`, `endday`, `ingest`, `lint`) | + 5 more skills, `agent-os/{rules,agents,hooks}/`, `adapters/`, `scripts/` |
+| Best for | Solo + 1–2 collaborators, getting started, personal knowledge wiki | Multi-person, multi-domain, governance needed |
 | Setup time | 5 min (copy + adapt) | 15 min (`install.sh` + adapt) |
 
 Both build on the same foundation. **Start Simple, graduate to Advanced when you outgrow it** — just copy `full/agent-os/` over your starter setup.

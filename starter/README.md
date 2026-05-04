@@ -15,17 +15,27 @@ memory/
     INDEX.md
   outputs/          — generated deliverables (specs, reports)
   raw/              — immutable source dumps
+agent-os/
+  skills/           — 4 core memory-loop workflows
+    morning/        — load context, propose plan
+    endday/         — save session, log corrections
+    ingest/         — URL/file/text → raw/ + wiki/ + daily/
+    lint/           — wiki health check (script + semantic)
 ```
 
-12 files total. The example data is from a fictional product called **Acme Notes**. Replace it with your own as you go.
+18 files total. The example data is from a fictional product called **Acme Notes**. Replace it with your own as you go.
 
 ## How to use it
 
 1. **Copy this `starter/` directory** into your own project (rename to whatever you want — `memory/` at project root works fine).
 2. **Open the project in your AI agent** — Claude Code, Codex, Cursor, Aider, anything that reads markdown.
 3. **Your agent reads `AGENTS.md` (or `CLAUDE.md`)** and learns the conventions automatically.
-4. **Start working.** As you share URLs, ask questions, make decisions — the wiki maintains itself.
+4. **Try `/morning`** to load context, **`/ingest`** when sharing a URL, **`/endday`** to save session, **`/lint`** monthly to check wiki health.
 5. **Each session starts** with `STATE.md` + `learnings.md` + `wiki/INDEX.md` + latest `daily/*.md`.
+
+## Why skills matter
+
+Without `/morning`, `/endday`, `/ingest`, `/lint` — `memory/` is just static folders. The skills are what make the wiki actually update over time as you work. They're the minimum needed for the memory loop to function.
 
 ## When you outgrow this
 
@@ -33,7 +43,7 @@ Simple Mode is for projects where one or two people work with one or two AI agen
 
 - Multi-domain agent state (separate context per role: backend-dev, frontend-dev, etc.)
 - Behavioral rules (auto-loaded policies, e.g. testing rules, cost-aware LLM routing)
-- Skills (reusable workflows like `/ingest`, `/lint`, `/morning`, `/endday`)
+- 5 more advanced skills (`/create-spec`, `/call-debrief`, `/web-researcher`, `/create`, `/swarm`)
 - Hooks (runtime enforcement: session-start auto-load, commit memory reminders)
 - Pre-commit governance (staleness checks, source-of-truth discipline)
 

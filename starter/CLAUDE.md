@@ -24,6 +24,17 @@
 - `memory/raw/` — immutable source dumps. Never edit, never rename.
 - `memory/outputs/` — generated deliverables (specs, reports, drafts).
 
+## Skills (memory loop workflows)
+
+4 skills live in `agent-os/skills/`. Each is a `SKILL.md` file describing a workflow you can invoke:
+
+- **`/morning`** — load context (STATE + learnings + INDEX + latest daily), propose plan
+- **`/endday`** — save session events to daily, update STATE if priorities shifted, log user corrections to learnings
+- **`/ingest`** — Karpathy ingest. URL/file/text → raw/ + update wiki/ + log daily/. The single most important skill — without it the wiki never grows
+- **`/lint`** — Karpathy lint. Mechanical wiki health check + semantic pass
+
+How they're invoked depends on the tool (Claude Code: `/morning`; Codex/Cursor: read `SKILL.md` when context matches description trigger phrases).
+
 ## Operations (Karpathy)
 
 ### Ingest
