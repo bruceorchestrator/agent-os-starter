@@ -145,9 +145,10 @@ For each file in the chosen mode:
 - Remove all references to Bluefin, Tessera, Acme Notes specifics
 
 **`memory/learnings.md`:**
-- Keep the format spec at top (it's the reusable scaffold)
+- Keep the lifecycle table at top (MISTAKES / PATTERNS / WINS / ARCHIVED — it's the reusable scaffold)
 - **Empty** the MISTAKES, WINS, and PATTERNS sections (or migrate from existing user notes if any)
 - Do NOT keep the Acme Notes example mistakes — those are example data
+- Do NOT create `memory/learnings.archive.md` preemptively — it's created on first archive via `/review-learnings`
 
 **`memory/wiki/`:**
 - Do NOT keep `sync-engine.md`, `billing-flows.md`, `design-partner-program.md`, `onboarding-funnel.md` — those are Acme Notes example pages

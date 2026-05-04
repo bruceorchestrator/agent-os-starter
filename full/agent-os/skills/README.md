@@ -19,11 +19,12 @@ The descriptions in each skill's frontmatter list the trigger phrases that shoul
 ### Core memory operations (Karpathy)
 
 - **`ingest/`** — save external source to `raw/`, update `wiki/`, log in `daily/`
-- **`lint/`** — wiki health check (mechanical script + semantic pass)
+- **`lint/`** — wiki health check (mechanical script + semantic pass + learnings.md size check)
+- **`review-learnings/`** — curate `learnings.md` lifecycle: promote repeated mistakes to PATTERNS, archive stale entries to `learnings.archive.md`. Proposes changes, never auto-applies.
 
 ### Session loop
 
-- **`morning/`** — start-of-day context load + plan
+- **`morning/`** — start-of-day context load + plan (flags bloated learnings.md)
 - **`endday/`** — end-of-day session save
 
 ### Memory writers (workflows that produce outputs/)

@@ -1,13 +1,14 @@
 # Skills (Simple Mode)
 
-4 core memory-loop workflows. The minimum needed for the wiki to actually update over time.
+5 core memory-loop workflows. The minimum needed for the wiki to actually update AND stay curated over time.
 
 ## What's here
 
-- **`morning/`** — start of day. Load `STATE.md` + `learnings.md` + latest `daily/`, propose plan
+- **`morning/`** — start of day. Load `STATE.md` + `learnings.md` + latest `daily/`, propose plan. Flags `learnings.md` if it's bloated.
 - **`endday/`** — end of day. Save session events to `daily/`, update `STATE.md` if priorities shifted, log corrections to `learnings.md`
 - **`ingest/`** — Karpathy ingest. URL/file/text → `raw/` + update `wiki/` + log `daily/`. **The single most important skill — without it the wiki never grows.**
-- **`lint/`** — Karpathy lint. Mechanical wiki health check (orphans, broken cross-links, stale pages) + semantic LLM pass
+- **`lint/`** — Karpathy lint. Mechanical wiki health check (orphans, broken cross-links, stale pages) + semantic LLM pass + learnings.md size check
+- **`review-learnings/`** — curate `learnings.md`. Promote repeated mistakes to PATTERNS, archive stale entries to `learnings.archive.md`. Proposes changes, never auto-applies. Run when file grows past ~500 lines.
 
 ## What's NOT here (Advanced Mode only)
 

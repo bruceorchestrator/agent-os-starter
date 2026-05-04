@@ -1,6 +1,19 @@
 # Acme Notes — Learnings
 
-Append-only record of mistakes (so we don't repeat them), wins (so we remember what worked), and patterns (durable insights). Read by your AI agent at session start.
+**Curated** operational memory. Read by your AI agent at session start for pattern recall.
+
+This is NOT a dump of every event (that's `daily/`). This file stays **active and signal-dense** — target ~300-500 lines. When it grows past that, run `/review-learnings` to curate (promote repeated mistakes to PATTERNS, archive stale entries to `learnings.archive.md`).
+
+## Lifecycle
+
+| Section | Purpose | Lifecycle |
+|---|---|---|
+| **MISTAKES** | Recent corrections (last 60-90 days) still likely to repeat | Append on user correction. Promote to PATTERN if same root cause repeats 2+ times. Archive when quiet 90+ days. |
+| **PATTERNS** | Durable rules graduated from repeated mistakes | Always-on. Stays unless invalidated. |
+| **WINS** | Positive signal log — what worked | Append-only, cheap to retain. |
+| **ARCHIVED** | Old lessons preserved for searchability | Lives in separate `learnings.archive.md` (append-only, NOT auto-loaded). |
+
+`daily/` is raw event log. `learnings.md` is the curated index. `learnings.archive.md` is history.
 
 ---
 

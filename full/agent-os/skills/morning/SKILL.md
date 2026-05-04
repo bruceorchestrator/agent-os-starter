@@ -25,6 +25,16 @@ Read in this order:
 - Latest 1-3 entries in `memory/daily/*.md` — recent events
 - `memory/clients/*.md` if any client work is active
 
+### 1.5 Size check (one-line nudge if learnings.md is bloated)
+
+Run `wc -l memory/learnings.md`. If > 500 lines, append to the briefing:
+
+```
+🟡 learnings.md is N lines. Curated memory should stay ~300-500. Run /review-learnings to consolidate.
+```
+
+One line, non-blocking. User decides.
+
 ### 2. Compose summary
 
 Output a short briefing (≤ 200 words):

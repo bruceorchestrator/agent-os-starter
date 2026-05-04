@@ -38,6 +38,10 @@ Output is a markdown report with:
 9. **🟡 Stale pages** — `updated` >90 days ago
 10. **🟡 Duplicate topic fields**
 
+Plus a separate check on `memory/learnings.md`:
+
+11. **🟡 learnings.md size** — if > 500 lines, surface "consider running `/review-learnings` to curate". This is the lifecycle separating active operational memory from `learnings.archive.md`.
+
 Read the report. Don't truncate it.
 
 ### Phase 2 — Semantic (LLM pass)
