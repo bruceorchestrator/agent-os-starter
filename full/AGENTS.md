@@ -31,8 +31,9 @@ Communication preferences live in `agent-os/rules/language.md` (also `.template`
 | `memory/wiki/` | Topic pages, cross-linked via `[[topic-name]]` | LLM-maintained |
 | `memory/outputs/` | Generated deliverables (specs, research, drafts) | Append + iterate |
 | `memory/STATE.md` | Current priorities, blockers | Update as state shifts |
-| `memory/learnings.md` | Mistakes, wins, patterns | Append-only during work |
-| `memory/clients/*.md` | Per-client live state (if applicable) | Update as relationships evolve |
+| `memory/learnings/` | `mistakes` / `patterns` / `decisions` / `constraints` / `archive` | Append `mistakes.md`; curate the rest |
+| `memory/projects/*.md` | Per-project / per-client live state | Update as relationships evolve |
+| `memory/inbox/` | Un-triaged capture + the `/mine-learnings` review queue | Drained as you triage |
 | `memory/daily/*.md` | Append-only event log per day | New section per session |
 | `memory/INDEX.md` | Navigation map | Update on structural changes |
 
@@ -49,10 +50,10 @@ Three operations from Karpathy's pattern, implemented as skills:
 Read in order at the start of every session:
 
 1. `memory/STATE.md` — current priorities and blockers
-2. `memory/learnings.md` MISTAKES section — past corrections
+2. `memory/learnings/mistakes.md` — past corrections (the hot file; read every session)
 3. `memory/INDEX.md` + `memory/wiki/INDEX.md` — navigation maps
 4. Latest `memory/daily/*.md` — recent events
-5. `memory/clients/<active>.md` if a specific client is in scope
+5. `memory/projects/<active>.md` if a specific project/client is in scope
 
 This is the minimum context to act. Don't re-read the whole wiki; drill from the indexes.
 
@@ -65,11 +66,12 @@ When a fact lives in multiple places, the table below defines which is authorita
 | Fact | Authoritative source | Read-only mirrors |
 |---|---|---|
 | Project priorities | `memory/STATE.md` | client files reference it |
-| Client live snapshot | `memory/clients/<name>.md` | STATE.md row summarizes |
+| Client live snapshot | `memory/projects/<name>.md` | STATE.md row summarizes |
 | Code paths + responsibilities | `agent-os/agents/<name>/PROJECT_MAP.md` | — |
 | Agent operational status | `agent-os/agents/<name>/STATUS.md` | client/STATE rows summarize |
 | Today's events | `memory/daily/YYYY-MM-DD.md` | STATUS event line cross-references |
-| Permanent learnings | `memory/learnings.md` (MISTAKES/WINS/PATTERNS) | — |
+| Permanent learnings | `memory/learnings/` (mistakes / patterns / decisions / constraints / archive) | — |
+| Learning candidates (un-promoted) | `memory/inbox/learnings-candidates.md` (`/mine-learnings` queue) | promoted into `learnings/` only after review |
 
 **Rule:** when you touch one source, scan its mirrors for stale markers and bring them along in the same commit. Test counts, status flags, deadline dates, and "as of YYYY-MM-DD" markers drift fastest.
 
@@ -87,7 +89,7 @@ Auto-loaded policies. Read each rule when its trigger context applies.
 | Plan mode for multi-stage tasks | Tasks with 3+ stages | `agent-os/rules/quality-gate.md` §1 |
 | Bug-fix protocol (test-first) | Any bug report | `agent-os/rules/quality-gate.md` §4 |
 | Agent dispatch + memory loop | When dispatching subagents | `agent-os/rules/agent-quality.md` |
-| Self-correction → learnings.md | Any user correction | `agent-os/rules/self-monitor.md` |
+| Self-correction → learnings/mistakes.md | Any user correction | `agent-os/rules/self-monitor.md` |
 | Test requirements | Engines, validators, security boundaries, bugs | `agent-os/rules/testing.md` |
 | File-size triggers | Before adding code to existing files | `agent-os/rules/file-size-triggers.md` |
 | LLM cost discipline | When designing LLM pipelines | `agent-os/rules/cost-aware-llm.md` |
@@ -125,6 +127,8 @@ Reusable workflows. Invoked by trigger phrase or `/skill-name`.
 | `/web-researcher` | "research", "investigate", "compare" | Multi-source research → outputs/research/ |
 | `/create` | "make a skill", "automate this" | Bootstrap new skill or agent |
 | `/swarm` | "parallel agents", "decompose" | Multi-agent task decomposition |
+| `/review-learnings` | "review learnings", file > target size | Curate `learnings/` — promote to patterns, archive stale |
+| `/mine-learnings` | "mine learnings", end of session | Mine the session transcript → candidate learnings into the review queue (human-approved before promotion) |
 
 See `agent-os/skills/README.md` and individual `SKILL.md` files for full procedures.
 

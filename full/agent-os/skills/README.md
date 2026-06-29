@@ -19,12 +19,13 @@ The descriptions in each skill's frontmatter list the trigger phrases that shoul
 ### Core memory operations (Karpathy)
 
 - **`ingest/`** — save external source to `raw/`, update `wiki/`, log in `daily/`
-- **`lint/`** — wiki health check (mechanical script + semantic pass + learnings.md size check)
-- **`review-learnings/`** — curate `learnings.md` lifecycle: promote repeated mistakes to PATTERNS, archive stale entries to `learnings.archive.md`. Proposes changes, never auto-applies.
+- **`lint/`** — wiki health check (mechanical script + semantic pass + `learnings/mistakes.md` size check)
+- **`review-learnings/`** — curate the `learnings/` lifecycle: promote repeated mistakes in `mistakes.md` to `patterns.md`, move stale entries to `archive.md`. Proposes changes, never auto-applies.
+- **`mine-learnings/`** — mine a session transcript for candidate learnings (detected corrections + repeated tool failures) → `inbox/learnings-candidates.md` review queue. Human approves each before it lands in `mistakes.md`. Engine: `scripts/mine_learnings.py` (+ tests).
 
 ### Session loop
 
-- **`morning/`** — start-of-day context load + plan (flags bloated learnings.md)
+- **`morning/`** — start-of-day context load + plan (flags bloated `learnings/mistakes.md`)
 - **`endday/`** — end-of-day session save
 
 ### Memory writers (workflows that produce outputs/)

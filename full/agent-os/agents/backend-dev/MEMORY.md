@@ -57,7 +57,7 @@ ALL migrations go through staging first. No exceptions, including "trivial" inde
 
 ### Stripe webhook URL env var
 
-Past incident (`memory/learnings.md` 2026-04-28): localhost webhook URL got promoted to prod, missed 3 days of payment events.
+Past incident (`memory/learnings/mistakes.md` 2026-04-28): localhost webhook URL got promoted to prod, missed 3 days of payment events.
 
 **Mitigation:** pre-deploy script asserts `STRIPE_WEBHOOK_URL` matches prod hostname. If you ever bypass that check, update both the assertion AND the env.
 

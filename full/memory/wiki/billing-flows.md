@@ -13,7 +13,7 @@
 
 - Webhook events: `customer.subscription.*`, `invoice.*`
 - Customer portal: hosted by Stripe, link from Settings → Billing
-- Webhook URL must match prod hostname — see `learnings.md` for the 2026-04-28 incident
+- Webhook URL must match prod hostname — see `learnings/mistakes.md` for the 2026-04-28 incident
 
 ## Dunning sequence
 
@@ -33,8 +33,8 @@
 
 At public launch (mid-July 2026):
 
-- [[clients/bluefin-coffee]] — 50% off year 1 = ~$48/month, ~$528/year annual
-- [[clients/tessera-studio]] — already converting at standard rate, ~$768/year annual
+- [[projects/bluefin-coffee]] — 50% off year 1 = ~$48/month, ~$528/year annual
+- [[projects/tessera-studio]] — already converting at standard rate, ~$768/year annual
 
 ## Cross-links
 

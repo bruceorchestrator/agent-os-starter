@@ -10,8 +10,9 @@ The foundational idea — **3-layer wiki** (raw / wiki / outputs) + **3 operatio
 
 He intentionally keeps the gist abstract and invites the community to instantiate it. This repo is one such instantiation, focused on the **working-codebase use case**, and adds:
 
-- Live operational state (`STATE.md`, `clients/`, `daily/`, `learnings.md`)
+- Live operational state (`STATE.md`, `projects/`, `daily/`, `learnings/`)
 - Multi-domain agent state (4-file pattern: `STATUS` / `MEMORY` / `PROJECT_MAP` / `RULES`)
+- A **trace → learnings loop** (`/mine-learnings`): mine a session transcript for corrections + repeated tool failures into a human-reviewed candidate queue
 - Memory-loop scaling by commit class
 - Mechanical governance (pre-commit staleness check, source-of-truth map)
 - Tool adapters (Claude Code, Codex, Cursor, Aider, Windsurf)
@@ -22,12 +23,13 @@ The pattern is his. The packaging is one way to use it on real projects.
 
 | | Simple Mode | Advanced Mode |
 |---|---|---|
-| Files | 18 | ~50 |
-| Includes | `memory/`, `AGENTS.md`/`CLAUDE.md`, 4 core skills (`morning`, `endday`, `ingest`, `lint`) | + 5 more skills, `agent-os/{rules,agents,hooks}/`, `adapters/`, `scripts/` |
+| Files | 18 | ~60 |
+| Memory | single `memory/learnings.md` (MISTAKES / WINS / PATTERNS in one file) | `memory/learnings/` split by lifecycle (`mistakes` / `patterns` / `decisions` / `constraints` / `archive`) + `inbox/` candidate queue |
+| Includes | `memory/`, `AGENTS.md`/`CLAUDE.md`, 5 core skills (`morning`, `endday`, `ingest`, `lint`, `review-learnings`) | + more skills incl. **`/mine-learnings`** (trace → learnings loop), `agent-os/{rules,agents,hooks}/`, `adapters/`, `scripts/` (incl. `mine_learnings.py` + tests) |
 | Best for | Solo + 1–2 collaborators, getting started, personal knowledge wiki | Multi-person, multi-domain, governance needed |
 | Setup time | 5 min (copy + adapt) | 15 min (`install.sh` + adapt) |
 
-Both build on the same foundation. **Start Simple, graduate to Advanced when you outgrow it** — just copy `full/agent-os/` over your starter setup.
+Both build on the same foundation. **Start Simple, graduate to Advanced when you outgrow it** — just copy `full/agent-os/` over your starter setup. The single `learnings.md` becomes the `learnings/` directory once it outgrows one file.
 
 ## Install
 

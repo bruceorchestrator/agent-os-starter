@@ -10,9 +10,9 @@ For users who prefer not to use the AI-paste flow ([`INSTALL_PROMPT.md`](INSTALL
 
 ## Choose mode
 
-**Simple Mode** — minimum viable. 12 files. Pure Karpathy wiki + minimal live state. 5-minute setup.
+**Simple Mode** — minimum viable. 18 files. Pure Karpathy wiki + minimal live state (single `learnings.md`). 5-minute setup.
 
-**Advanced Mode** — complete framework. ~50 files. Adds rules, agents, skills, hooks, governance. 15-minute setup.
+**Advanced Mode** — complete framework. ~60 files. Adds rules, agents, skills, hooks, governance, a lifecycle-split `learnings/` directory, and the `/mine-learnings` trace→learnings loop. 15-minute setup.
 
 If unsure → start Simple. Graduate later by copying `full/agent-os/` over your existing setup.
 
@@ -54,14 +54,16 @@ After install:
 1. **Verify:** `bash scripts/context.sh` — should print STATE + INDEX without errors
 2. **Replace example data** with your project's reality:
    - `memory/STATE.md` — your priorities
-   - `memory/clients/` — delete Bluefin/Tessera, add yours (or leave empty)
+   - `memory/learnings/` — empty the Acme example entries from `mistakes.md` / `patterns.md` / `decisions.md` / `constraints.md` / `archive.md` (keep the format/intro blocks). Leave `inbox/learnings-candidates.md` as the empty queue
+   - `memory/projects/` — delete Bluefin/Tessera, add yours (or leave empty)
    - `memory/wiki/` — delete sync-engine/billing-flows/etc., add yours (or empty `INDEX.md`)
    - `memory/outputs/specs/` and `outputs/research/` — delete the Acme samples
    - `memory/daily/` — delete the Acme example day
    - `agent-os/agents/backend-dev/PROJECT_MAP.md` — replace with your stack/dirs
-3. **Optional persona:** rename `agent-os/rules/identity.md.template` → `identity.md`, customize
-4. **Optional personal context:** rename `memory/USER.md.template` → `USER.md`, fill in
-5. **Open in your AI agent** — verify `AGENTS.md` is auto-loaded
+3. **Try the trace→learnings loop:** `python scripts/mine_learnings.py --no-llm` mines your latest session transcript for candidate learnings (zero setup; review via `/mine-learnings`)
+4. **Optional persona:** rename `agent-os/rules/identity.md.template` → `identity.md`, customize
+5. **Optional personal context:** rename `memory/USER.md.template` → `USER.md`, fill in
+6. **Open in your AI agent** — verify `AGENTS.md` is auto-loaded
 
 ## Customizing for your stack
 

@@ -34,8 +34,8 @@ If you want more rules: copy a generic one as a template, or write your own. The
 
 When you hit a recurring issue your AI keeps making, write a rule. The flow:
 
-1. The mistake gets logged in `memory/learnings.md`
+1. The mistake gets logged in `memory/learnings/mistakes.md`
 2. If the mistake repeats, promote the lesson to a rule here
 3. Update the schema (`AGENTS.md`) to reference the new rule
 
-Rules are for patterns the AI must follow on every task. One-off lessons stay in `learnings.md`.
+Rules are for patterns the AI must follow on every task. One-off lessons stay in `learnings/mistakes.md`.

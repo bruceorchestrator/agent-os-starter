@@ -3,7 +3,7 @@
 #
 # Wraps scripts/context.sh into a SessionStart hook output. Injects directly
 # into session context so the AI doesn't have to manually read STATE.md /
-# learnings.md / latest daily on every session.
+# learnings/mistakes.md / latest daily on every session.
 #
 # Wire up in .claude/settings.json:
 #   "hooks": {
@@ -30,7 +30,7 @@ FULL_CONTEXT="$(bash "$CONTEXT_SCRIPT" 2>/dev/null)"
 echo "$FULL_CONTEXT" > "$BACKUP_PATH" 2>/dev/null
 
 PREAMBLE="# SESSION CONTEXT (auto-loaded — DO NOT skip)
-This is the live project state, recent activity, and known mistakes-to-avoid. Treat it as already-read context for the rest of the session — don't Read STATE.md / learnings.md again unless something looks stale.
+This is the live project state, recent activity, and known mistakes-to-avoid. Treat it as already-read context for the rest of the session — don't Read STATE.md / learnings/mistakes.md again unless something looks stale.
 
 If this content appears truncated (cut off mid-section, no '---' footer at the end), the FULL version is at: $BACKUP_PATH — Read it immediately.
 ---

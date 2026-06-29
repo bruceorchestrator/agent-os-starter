@@ -16,7 +16,7 @@ Last updated: 2026-05-03 (PDF export MVP spec'd; sync regression suite green)
 - Root cause: WebSocket reconnect logic didn't handle iOS Safari's BFCache restore correctly.
 - Fix: detect BFCache restore via `pageshow` event with `persisted: true`, re-establish connection.
 - Shipped as hotfix. Bluefin and Tessera confirmed unblocked.
-- Post-mortem: see `memory/learnings.md` MISTAKES (2026-04-20) — gap was lack of conflict regression tests, now closing.
+- Post-mortem: see `memory/learnings/mistakes.md` MISTAKES (2026-04-20) — gap was lack of conflict regression tests, now closing.
 
 ### 2026-04-30 — Schema migration: `notes.team_id` index
 

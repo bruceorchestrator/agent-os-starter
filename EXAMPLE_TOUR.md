@@ -36,7 +36,7 @@ Every session repeats the context dump. Nothing compounds.
 ```
 You: "morning"
 
-AI:  [auto-loads memory/STATE.md, learnings.md MISTAKES, wiki/INDEX.md,
+AI:  [auto-loads memory/STATE.md, learnings/mistakes.md, wiki/INDEX.md,
       latest daily/]
 
      Top priorities:
@@ -55,7 +55,7 @@ AI:  [auto-loads memory/STATE.md, learnings.md MISTAKES, wiki/INDEX.md,
      Start with #1?
 ```
 
-The AI knows the project. It read `STATE.md` (priorities), `learnings.md` (don't repeat past mistakes), `wiki/` (durable knowledge about sync, billing, design partners), and the latest `daily/` (recent events). Zero context dump from you.
+The AI knows the project. It read `STATE.md` (priorities), `learnings/` (don't repeat past mistakes), `wiki/` (durable knowledge about sync, billing, design partners), and the latest `daily/` (recent events). Zero context dump from you.
 
 ---
 
@@ -86,12 +86,18 @@ starter/
 
 ```
 full/
-├── AGENTS.md                ← schema (router, not a rule dump — 187 lines)
+├── AGENTS.md                ← schema (router, not a rule dump)
 ├── CLAUDE.md                ← mirror
 ├── memory/                  ← like starter/, plus:
 │   ├── INDEX.md             ← top-level navigation
 │   ├── USER.md.template     ← optional personal context
-│   ├── clients/             ← per-client live state
+│   ├── learnings/           ← single learnings.md split by lifecycle:
+│   │   ├── mistakes.md      ← the hot file (read every session)
+│   │   ├── patterns.md · decisions.md · constraints.md
+│   │   └── archive.md       ← stale lessons + wins (not auto-loaded)
+│   ├── inbox/               ← /mine-learnings candidate queue
+│   │   └── learnings-candidates.md
+│   ├── projects/            ← per-project / per-client live state
 │   │   ├── bluefin-coffee.md
 │   │   └── tessera-studio.md
 │   └── outputs/
@@ -111,8 +117,9 @@ full/
     │       ├── MEMORY.md         ← long-term gotchas
     │       ├── PROJECT_MAP.md    ← code map (REPLACE WITH YOUR STACK)
     │       └── RULES.md          ← hard rules for this domain
-    ├── skills/              ← 9 reusable workflows
+    ├── skills/              ← reusable workflows
     │   ├── morning, endday, ingest, lint
+    │   ├── review-learnings, mine-learnings   ← learnings lifecycle + trace→learnings loop
     │   ├── create-spec, call-debrief, web-researcher
     │   └── create, swarm
     └── hooks/               ← runtime enforcement
@@ -120,9 +127,9 @@ full/
         └── commit-memory-reminder.sh
 ```
 
-Plus `adapters/` for tool-specific wiring (Cursor, Aider, Windsurf) and `scripts/` for governance (staleness check at commit time, install.sh).
+Plus `adapters/` for tool-specific wiring (Cursor, Aider, Windsurf) and `scripts/` for governance (staleness check at commit time, `install.sh`, `mine_learnings.py` + tests).
 
-**~50 files total.** More moving parts, but each piece earns its place.
+**~60 files total.** More moving parts, but each piece earns its place.
 
 ---
 
@@ -133,11 +140,12 @@ Plus `adapters/` for tool-specific wiring (Cursor, Aider, Windsurf) and `scripts
 - `/endday` → session saved to `daily/`, drift caught
 - `/ingest <url>` → AI reads it, files raw source, updates wiki, logs daily
 - `/lint` → wiki health check (orphans, broken links, stale claims)
-- AI corrects itself → mistake auto-logged to `learnings.md`, never repeated
+- `/mine-learnings` → mine the session transcript for corrections + repeated tool failures → review queue
+- AI corrects itself → mistake logged to `learnings/mistakes.md`, never repeated
 
 **Over weeks:**
 - `wiki/` compounds — concepts get richer with every ingest
-- `learnings.md` accumulates — your AI gets sharper, not flatter
+- `learnings/mistakes.md` stays curated (promote → `patterns.md`, archive stale) — your AI gets sharper, not flatter
 - Agent state stays continuous — `backend-dev` remembers the sync incident from 3 weeks ago
 - Pre-commit hook catches stale state markers before they ship
 

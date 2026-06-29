@@ -44,7 +44,7 @@ Template:
 **Date:** YYYY-MM-DD
 **Owner:** [who's building]
 **Driver:** [who asked / customer for this]
-**Customer (if applicable):** [[clients/<name>]]
+**Customer (if applicable):** [[projects/<name>]]
 **ETA:** [target date]
 
 ## Problem
@@ -83,7 +83,7 @@ Given [precondition], when [action], then [observable outcome]:
 ## Cross-links
 
 - Related: [[wiki/<topic>]]
-- Customer context: [[clients/<name>]]
+- Customer context: [[projects/<name>]]
 ```
 
 ### 3. Save and confirm

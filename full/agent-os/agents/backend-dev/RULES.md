@@ -16,7 +16,7 @@ Inviolable rules for this agent. Update only when establishing a new rule from p
 
 ## Billing
 
-7. **Webhook URL env var assertion before deploy.** `STRIPE_WEBHOOK_URL` must match production hostname. See `learnings.md` 2026-04-28.
+7. **Webhook URL env var assertion before deploy.** `STRIPE_WEBHOOK_URL` must match production hostname. See `learnings/mistakes.md` 2026-04-28.
 8. **Never log full Stripe payloads.** They contain customer payment metadata. Log event type + customer ID only.
 9. **Stripe webhook signature verification is non-optional.** All webhook endpoints must verify before processing.
 

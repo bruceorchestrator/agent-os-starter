@@ -2,18 +2,19 @@
 
 ## Part 0: Improvement Loop (MANDATORY)
 
-**`memory/learnings.md` MISTAKES section is the single source of truth for past mistakes across sessions.**
+**`memory/learnings/mistakes.md` is the single source of truth for past mistakes across sessions.**
+(Its siblings: `patterns.md` = durable rules, `decisions.md` = decision log, `constraints.md` = hard always/never, `archive.md` = stale lessons + wins. See `memory/learnings/README.md`.)
 
 ### Read on session start
 
-At the start of every session, read `memory/learnings.md` MISTAKES section. These are past mistakes. Don't repeat them.
+At the start of every session, read `memory/learnings/mistakes.md`. These are past mistakes. Don't repeat them.
 
 ### Write after every user correction
 
 When the user corrects you ("no", "wrong", "not that", "stop"):
 
 1. Acknowledge the correction immediately — stop the wrong approach
-2. **Append to `memory/learnings.md` MISTAKES section** with this format:
+2. **Append to `memory/learnings/mistakes.md`** with this format:
 
 ```
 ## YYYY-MM-DD — Short title
@@ -32,15 +33,23 @@ When the user corrects you ("no", "wrong", "not that", "stop"):
 - You marking done, user pointing out it's broken
 - You repeating a past mistake (double-severity lesson)
 
-### What does NOT go in learnings.md
+### What does NOT go in mistakes.md
 
-- Scope changes ("let's do X instead of Y") — that's a decision, not a mistake
+- Scope changes ("let's do X instead of Y") — that's a decision → `decisions.md`, not a mistake
 - Clarifications ("I meant X") — that's ambiguity, not a correction
 - One-off typos or trivial bugs — git history covers those
 
+### Automated capture (optional)
+
+`/mine-learnings` reads a session transcript and proposes candidate mistakes (detected corrections + repeated
+tool failures) into `memory/inbox/learnings-candidates.md`. You review each and promote it to `mistakes.md`.
+It never writes `learnings/` directly — promotion is always human-in-the-loop. Run it at end-of-session to catch
+corrections you logged in the moment but forgot to write down.
+
 ### Rotation
 
-If MISTAKES section exceeds ~50 entries → review and archive lessons >60 days old that no longer trigger. Append-only during work; cleanup is a separate deliberate action.
+When `mistakes.md` grows past ~300 lines → run `/review-learnings`: promote repeated mistakes to `patterns.md`,
+move lessons quiet for 60+ days to `archive.md`. Append-only during work; curation is a separate deliberate action.
 
 ## Part 1: Detection (In-Session)
 
@@ -76,7 +85,7 @@ Watch for these signals:
 | Signal | Action | Where |
 |--------|--------|-------|
 | Solved a tricky problem | Save solution | Memory wiki |
-| User corrected me | Update/remove incorrect info | learnings.md |
+| User corrected me | Update/remove incorrect info | learnings/mistakes.md |
 | Found a codebase convention | Document | Memory or rules |
 | Same workflow 2+ times | Create a skill | `agent-os/skills/` |
 | Existing memory is stale | Edit or delete | Memory files |
@@ -106,7 +115,7 @@ When the user says "no", "wrong", "not that", "stop":
 1. Acknowledge the correction immediately
 2. Do NOT continue the same approach
 3. Ask: should this become a permanent rule?
-4. If yes → update `agent-os/rules/` accordingly + log to `learnings.md`
+4. If yes → update `agent-os/rules/` accordingly + log to `learnings/mistakes.md`
 
 ## Known Failure Modes
 

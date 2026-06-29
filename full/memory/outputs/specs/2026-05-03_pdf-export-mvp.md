@@ -3,7 +3,7 @@
 **Date:** 2026-05-03
 **Owner:** Alex (backend)
 **Driver:** Maya (founder)
-**Customer:** [[clients/bluefin-coffee]]
+**Customer:** [[projects/bluefin-coffee]]
 **ETA:** 2026-05-08 (Friday)
 
 ## Problem
@@ -52,5 +52,5 @@ Given a user is viewing a note, when they click "Export to PDF", then:
 
 ## Cross-links
 
-- Bluefin's request: [[clients/bluefin-coffee]]
+- Bluefin's request: [[projects/bluefin-coffee]]
 - Related: [[wiki/design-partner-program]]

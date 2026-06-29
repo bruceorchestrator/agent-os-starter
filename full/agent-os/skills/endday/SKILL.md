@@ -55,7 +55,7 @@ Per `agent-os/rules/agent-quality.md` memory-loop scaling — match update depth
 
 ### 4. If the user corrected you today
 
-Append entry to `memory/learnings.md` MISTAKES section with the format:
+Append entry to `memory/learnings/mistakes.md` MISTAKES section with the format:
 
 ```
 ## YYYY-MM-DD — Short title
@@ -74,7 +74,7 @@ Saved to memory:
 - daily/YYYY-MM-DD.md (N actions, N decisions)
 - STATE.md (updated priorities) [if applicable]
 - agents/<name>/STATUS.md [if applicable]
-- learnings.md (N new mistakes recorded) [if applicable]
+- learnings/mistakes.md (N new mistakes recorded) [if applicable]
 
 See you tomorrow.
 ```
@@ -84,4 +84,4 @@ See you tomorrow.
 - Writing a 2-page novel in daily/ — bullets, not paragraphs
 - Including chat trivia ("user asked X, I responded Y") — only meaningful events
 - Overwriting yesterday's state — append, don't replace
-- Skipping the user-correction → learnings.md step (highest-value transcript output)
+- Skipping the user-correction → learnings/mistakes.md step (highest-value transcript output)

@@ -4,7 +4,7 @@
 # Fires as a PostToolUse hook after a Bash tool call. If the command was
 # `git commit` AND succeeded, prints a reminder for the AI to:
 #   1. Append a concise entry to memory/daily/YYYY-MM-DD.md
-#   2. If a non-obvious lesson emerged, append to memory/learnings.md
+#   2. If a non-obvious lesson emerged, append to memory/learnings/mistakes.md
 #
 # Why: catches the "I committed but forgot to log it" gap. Daily logs and
 # learnings drift if not nudged.
@@ -64,7 +64,7 @@ Memory-loop reminder (commit ${commit_hash}):
 
 Per agent-os/rules/agent-quality.md memory-loop scaling, this commit needs:
 - Append entry to memory/daily/${TODAY}.md describing what changed (1-2 bullets minimum)
-- If a non-obvious lesson emerged → append to memory/learnings.md MISTAKES section
+- If a non-obvious lesson emerged → append to memory/learnings/mistakes.md MISTAKES section
 - For structural commits (new file/module) → also update relevant agent's PROJECT_MAP.md
 
 Shortcut to skip: if this is a trivial fix (<30 lines, single file, no surprises),

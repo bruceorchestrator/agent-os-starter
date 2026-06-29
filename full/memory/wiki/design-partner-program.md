@@ -18,8 +18,8 @@
 ## Current partners (8 total)
 
 Documented:
-- [[clients/bluefin-coffee]] — 12-person coffee chain ops, daily SOPs use case
-- [[clients/tessera-studio]] — 8-person design agency, client briefs use case
+- [[projects/bluefin-coffee]] — 12-person coffee chain ops, daily SOPs use case
+- [[projects/tessera-studio]] — 8-person design agency, client briefs use case
 
 Pending documentation (5 active + 1 churned):
 - 5 more partners — fill in via ingest as their context lands

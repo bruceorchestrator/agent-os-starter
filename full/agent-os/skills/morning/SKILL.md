@@ -20,17 +20,17 @@ Start-of-day ritual. Load fresh context and propose a plan for the day.
 Read in this order:
 
 - `memory/STATE.md` — current priorities and blockers
-- `memory/learnings.md` MISTAKES section — recent corrections
+- `memory/learnings/mistakes.md` MISTAKES section — recent corrections
 - `memory/wiki/INDEX.md` — what topics exist
 - Latest 1-3 entries in `memory/daily/*.md` — recent events
-- `memory/clients/*.md` if any client work is active
+- `memory/projects/*.md` if any client work is active
 
-### 1.5 Size check (one-line nudge if learnings.md is bloated)
+### 1.5 Size check (one-line nudge if learnings/mistakes.md is bloated)
 
-Run `wc -l memory/learnings.md`. If > 500 lines, append to the briefing:
+Run `wc -l memory/learnings/mistakes.md`. If > 500 lines, append to the briefing:
 
 ```
-🟡 learnings.md is N lines. Curated memory should stay ~300-500. Run /review-learnings to consolidate.
+🟡 learnings/mistakes.md is N lines. Curated memory should stay ~300-500. Run /review-learnings to consolidate.
 ```
 
 One line, non-blocking. User decides.

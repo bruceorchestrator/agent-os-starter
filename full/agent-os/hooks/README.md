@@ -6,8 +6,8 @@ Runtime enforcement scripts. Hooks fire automatically at specific events — the
 
 Static rules tell the AI what to do. Hooks make sure it actually happens. Examples:
 
-- **`session-start.sh`** — automatically loads `STATE.md`, `learnings.md`, latest `daily/` into the session at start. The AI doesn't have to remember to read them; the harness injects them.
-- **`commit-memory-reminder.sh`** — fires after `git commit`, nudges the AI to update `daily/` and `learnings.md`. Catches the "I committed but forgot to log" gap.
+- **`session-start.sh`** — automatically loads `STATE.md`, `learnings/mistakes.md`, latest `daily/` into the session at start. The AI doesn't have to remember to read them; the harness injects them.
+- **`commit-memory-reminder.sh`** — fires after `git commit`, nudges the AI to update `daily/` and `learnings/mistakes.md`. Catches the "I committed but forgot to log" gap.
 
 These complement rules in `agent-os/rules/` — rules are policy, hooks are enforcement.
 

@@ -21,8 +21,8 @@
 
 ## Heavy users (watch closely)
 
-- [[clients/bluefin-coffee]] — 12-person ops team, real-time SOPs across cafes
-- [[clients/tessera-studio]] — 8-person agency, real-time client-brief collaboration
+- [[projects/bluefin-coffee]] — 12-person ops team, real-time SOPs across cafes
+- [[projects/tessera-studio]] — 8-person agency, real-time client-brief collaboration
 
 ## Cross-links
 

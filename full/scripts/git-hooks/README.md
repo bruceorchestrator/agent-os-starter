@@ -26,7 +26,7 @@ A commit is rejected when ANY of these is true:
 | Trigger | Why |
 |---|---|
 | `memory/STATE.md` body changed AND `Last updated:` is < today | Top-level state header drifted from body |
-| `memory/clients/*.md` current-state region changed AND `## Current State as of YYYY-MM-DD` is < today | Client snapshot date drifted from body |
+| `memory/projects/*.md` current-state region changed AND `## Current State as of YYYY-MM-DD` is < today | Client snapshot date drifted from body |
 | `agent-os/agents/*/PROJECT_MAP.md` body changed AND `Last updated:` is < today | Agent code map drifted |
 
 ## What gets warned (no block)
@@ -50,7 +50,7 @@ Use `STALENESS_SKIP=1` if you're intentionally preserving an old date (e.g. back
 Open `pre-commit` and edit the `pii_pattern=''` line. Examples:
 
 ```bash
-pii_pattern='^secrets/|^clients/.+/raw/.+\.pdf$|\.env\.'
+pii_pattern='^secrets/|^projects/.+/raw/.+\.pdf$|\.env\.'
 ```
 
 Default is empty (no PII enforcement) — set it before relying on it.

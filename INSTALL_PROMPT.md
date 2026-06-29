@@ -10,8 +10,8 @@ Reference repo: **https://github.com/bruceorchestrator/agent-os-starter**
 
 Fetch its contents (via web fetch, git clone, or your equivalent). Two modes ship there:
 
-- **`starter/`** (Simple Mode) — 12 files: `memory/` + `AGENTS.md`/`CLAUDE.md`
-- **`full/`** (Advanced Mode) — ~50 files: adds `agent-os/{rules,agents,skills,hooks}/` + `adapters/` + `scripts/`
+- **`starter/`** (Simple Mode) — 18 files: `memory/` (single `learnings.md`) + `AGENTS.md`/`CLAUDE.md`
+- **`full/`** (Advanced Mode) — ~60 files: adds `agent-os/{rules,agents,skills,hooks}/` + `adapters/` + `scripts/`, splits `learnings.md` into a `learnings/` directory, and adds the `/mine-learnings` trace→learnings loop
 
 Both build on Karpathy's LLM wiki pattern. Advanced Mode adds operational state, agent state, and governance.
 
@@ -96,19 +96,22 @@ Mode: [Simple | Advanced]
 
 Files to install:
   - memory/STATE.md (will customize for your project)
-  - memory/learnings.md (empty MISTAKES section)
+  - memory/learnings.md (Simple) — single file, empty MISTAKES section
   - memory/wiki/INDEX.md
   - memory/daily/YYYY-MM-DD.md (today's first entry)
   - memory/{outputs,raw}/README.md
   - AGENTS.md (canonical schema)
   - CLAUDE.md (mirror for Claude Code)
   [Advanced only:]
-  - agent-os/rules/ (9 behavioral policies)
-  - agent-os/skills/ (9 reusable workflows)
+  - memory/learnings/ (split: mistakes/patterns/decisions/constraints/archive + README) — replaces the single learnings.md
+  - memory/inbox/learnings-candidates.md (the /mine-learnings review queue)
+  - memory/projects/ (per-project / per-client live state)
+  - agent-os/rules/ (behavioral policies)
+  - agent-os/skills/ (reusable workflows, incl. review-learnings + mine-learnings)
   - agent-os/agents/<role>/ (4-file state per domain agent)
   - agent-os/hooks/ (session-start, commit-memory-reminder)
   - adapters/<your-tool>/
-  - scripts/context.sh, scripts/git-hooks/
+  - scripts/context.sh, scripts/mine_learnings.py (+ tests), scripts/git-hooks/
 
 Files I'll preserve (won't touch):
   - [list anything pre-existing that I'll leave alone]
@@ -144,11 +147,10 @@ For each file in the chosen mode:
 - Replace team section ("Maya / Alex") with the user's actual team
 - Remove all references to Bluefin, Tessera, Acme Notes specifics
 
-**`memory/learnings.md`:**
-- Keep the lifecycle table at top (MISTAKES / PATTERNS / WINS / ARCHIVED — it's the reusable scaffold)
-- **Empty** the MISTAKES, WINS, and PATTERNS sections (or migrate from existing user notes if any)
-- Do NOT keep the Acme Notes example mistakes — those are example data
-- Do NOT create `memory/learnings.archive.md` preemptively — it's created on first archive via `/review-learnings`
+**`memory/learnings.md` (Simple Mode) / `memory/learnings/` (Advanced Mode):**
+- **Simple Mode** keeps a single `learnings.md`: keep the lifecycle table (MISTAKES / PATTERNS / WINS), **empty** the sections, drop the Acme example mistakes. Do NOT create `learnings.archive.md` preemptively.
+- **Advanced Mode** keeps the `learnings/` directory: keep `README.md` + the per-file scaffolds (`mistakes.md`, `patterns.md`, `decisions.md`, `constraints.md`, `archive.md`); **empty** the Acme example entries from each, leaving the format/intro blocks. Keep `inbox/learnings-candidates.md` as the seeded (empty) queue.
+- Either way: do NOT keep the Acme Notes example lessons — those are example data.
 
 **`memory/wiki/`:**
 - Do NOT keep `sync-engine.md`, `billing-flows.md`, `design-partner-program.md`, `onboarding-funnel.md` — those are Acme Notes example pages
@@ -160,9 +162,9 @@ For each file in the chosen mode:
 - Create today's file with a single "Actions" entry: "Installed agent-os pattern via INSTALL_PROMPT.md"
 - Do NOT keep the Acme example day
 
-**`memory/clients/*.md` (Advanced only):**
+**`memory/projects/*.md` (Advanced only):**
 - Do NOT keep `bluefin-coffee.md`, `tessera-studio.md`
-- If the user has actual clients/customers, ask them and create stubs
+- If the user has actual projects/customers, ask them and create stubs
 - Otherwise, leave the directory empty
 
 **`memory/outputs/specs/*.md` and `outputs/research/*.md` (Advanced only):**
@@ -243,6 +245,8 @@ This activates the staleness check on `git commit`.
 
 If the project already uses `core.hooksPath` for something else, do NOT overwrite — tell the user the conflict and let them decide.
 
+**First commit after install:** the staleness hook hard-blocks a commit when a current-state file's body changed but its `Last updated:` / `## Current State as of` date is older than today. On the very first commit, every installed file counts as "changed", so any example date left in the past (e.g. the Acme `2026-05-03`) will block. This is why Step 4 bumps `STATE.md` (and any `PROJECT_MAP.md` / `STATUS.md` you keep) to today's date. If you've customized faithfully it just passes; if you're committing the template as-is to start, use `STALENESS_SKIP=1 git commit ...` for that first commit only.
+
 ### Step 8 — Summarize
 
 Output to the user:
@@ -295,7 +299,7 @@ Next:
 Three cases, in order of likelihood:
 
 1. **Empty `memory/`** → just install
-2. **`memory/` with agent-os-style files** (`STATE.md`, `daily/`, `learnings.md`, etc.) → MERGE: copy only files that don't exist. Never overwrite existing content.
+2. **`memory/` with agent-os-style files** (`STATE.md`, `daily/`, `learnings.md` or `learnings/`, etc.) → MERGE: copy only files that don't exist. Never overwrite existing content.
 3. **`memory/` with custom format** (different structure) → ASK: "your existing `memory/` has [describe what you see]. Adopt the agent-os pattern (I'll back yours up to `memory.backup-YYYYMMDD/`), or only add the missing pieces?"
 
 Default: NEVER destroy existing memory. The user's notes are sacred.
@@ -315,7 +319,7 @@ The pattern is modular. Components are independent.
 STOP. Ask the user. Examples of things to ask:
 
 - "Which directories in your project are 'backend' vs 'frontend'?" (for PROJECT_MAP)
-- "Who are your key clients or customers?" (for `clients/` if Advanced)
+- "Who are your key clients or customers?" (for `projects/` if Advanced)
 - "What are your top 3 priorities right now?" (for STATE.md)
 - "Your preferred response language?" (for language.md template)
 - "Do you want me to keep the example backend-dev agent, or skip it?"

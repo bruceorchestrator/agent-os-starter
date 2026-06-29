@@ -7,7 +7,7 @@ Hard-blocks 3 patterns where body of a current-state file changed but the
 header/date marker is stale (older than today):
 
   1. memory/STATE.md             — `Last updated: YYYY-MM-DD` near top
-  2. memory/clients/*.md         — `## Current State as of YYYY-MM-DD` section
+  2. memory/projects/*.md         — `## Current State as of YYYY-MM-DD` section
   3. agent-os/agents/*/PROJECT_MAP.md — `Last updated: YYYY-MM-DD`
 
 Warn-only:
@@ -124,7 +124,7 @@ def check_simple_header(path: str, hard_block: bool) -> None:
 
 
 def check_client_current_state(path: str) -> None:
-    """memory/clients/*.md — only enforce on current-state region."""
+    """memory/projects/*.md — only enforce on current-state region."""
     content = staged_content(path)
     lines = content.splitlines()
     cs_start = cs_end = None
@@ -160,7 +160,7 @@ for path in staged_files():
         check_simple_header(path, hard_block=True)
     elif re.match(r"^agent-os/agents/[^/]+/STATUS\.md$", path):
         check_simple_header(path, hard_block=False)
-    elif re.match(r"^memory/clients/[^/]+\.md$", path):
+    elif re.match(r"^memory/projects/[^/]+\.md$", path):
         check_client_current_state(path)
 
 

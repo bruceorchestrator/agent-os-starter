@@ -1,6 +1,6 @@
 ---
 name: call-debrief
-description: Extract decisions, action items, participants, and build implementation plan from call transcript OR audio recording. Auto-detects project context. Saves structured markdown debrief to memory/outputs/call-debriefs/. Updates memory/clients/ and memory/daily/. Use when user pastes a transcript, drops audio, or says "call debrief", "call notes", "what was decided", "transcript".
+description: Extract decisions, action items, participants, and build implementation plan from call transcript OR audio recording. Auto-detects project context. Saves structured markdown debrief to memory/outputs/call-debriefs/. Updates memory/projects/ and memory/daily/. Use when user pastes a transcript, drops audio, or says "call debrief", "call notes", "what was decided", "transcript".
 ---
 
 # /call-debrief
@@ -22,7 +22,7 @@ Determine:
 - **Participants** — who was on the call (names + roles if known)
 - **Date** — date of the call (use today if not stated)
 - **Topic** — what was discussed at high level
-- **Client/project context** — does this match an existing `memory/clients/<name>.md`?
+- **Client/project context** — does this match an existing `memory/projects/<name>.md`?
 
 If audio file: transcribe first (whisper or equivalent), then proceed.
 
@@ -85,7 +85,7 @@ Template:
 
 ### 4. Update related state files
 
-- **If client call** — update `memory/clients/<name>.md`:
+- **If client call** — update `memory/projects/<name>.md`:
   - "Recent events" section: add dated entry
   - "Open asks" section: add new requests
   - "Current state as of" date: bump to today
@@ -104,7 +104,7 @@ Action items: N (X assigned to you, Y to others)
 Open questions: N
 
 Updated:
-- memory/clients/<name>.md (if client call)
+- memory/projects/<name>.md (if client call)
 - memory/daily/YYYY-MM-DD.md
 ```
 

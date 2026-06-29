@@ -6,7 +6,7 @@
 # session at start, but works standalone too:
 #
 #   bash scripts/context.sh                    # all defaults
-#   bash scripts/context.sh <client-name>      # include client file (memory/clients/<client-name>.md)
+#   bash scripts/context.sh <client-name>      # include client file (memory/projects/<client-name>.md)
 #
 # Output is plain text, not markdown — designed to be embedded in hook output.
 
@@ -42,17 +42,22 @@ if [ -f memory/wiki/INDEX.md ]; then
   echo ""
 fi
 
-# learnings MISTAKES (recent only)
-if [ -f memory/learnings.md ]; then
+# learnings — recent mistakes (the hot file)
+if [ -f memory/learnings/mistakes.md ]; then
+  echo "## RECENT MISTAKES (don't repeat)"
+  head -100 memory/learnings/mistakes.md
+  echo ""
+elif [ -f memory/learnings.md ]; then
+  # Simple Mode fallback — single-file learnings with a MISTAKES section
   echo "## RECENT MISTAKES (don't repeat)"
   awk '/^## MISTAKES/,/^## WINS/' memory/learnings.md | head -100
   echo ""
 fi
 
 # Client file (if namespace given)
-if [ -n "$CLIENT_NAMESPACE" ] && [ -f "memory/clients/$CLIENT_NAMESPACE.md" ]; then
+if [ -n "$CLIENT_NAMESPACE" ] && [ -f "memory/projects/$CLIENT_NAMESPACE.md" ]; then
   echo "## CLIENT: $CLIENT_NAMESPACE"
-  head -100 "memory/clients/$CLIENT_NAMESPACE.md"
+  head -100 "memory/projects/$CLIENT_NAMESPACE.md"
   echo ""
 fi
 

@@ -4,7 +4,7 @@ This project uses the **agent-os** pattern. The canonical schema is in `AGENTS.m
 
 ## Quick reference
 
-- **Memory layer:** `memory/` — read `STATE.md` + `learnings.md` MISTAKES + `wiki/INDEX.md` at session start.
+- **Memory layer:** `memory/` — read `STATE.md` + `learnings/mistakes.md` MISTAKES + `wiki/INDEX.md` at session start.
 - **Behavioral rules:** `agent-os/rules/` — auto-loaded policies (verification, testing, file size, cost).
 - **Skills:** `agent-os/skills/` — reusable workflows.
 - **Agents:** `agent-os/agents/` — domain specialists with persistent state.
@@ -21,7 +21,7 @@ This project uses the **agent-os** pattern. The canonical schema is in `AGENTS.m
 |---|---|
 | What this project is | `AGENTS.md` § Identity, § Memory protocol |
 | Current priorities | `memory/STATE.md` |
-| Past mistakes to avoid | `memory/learnings.md` |
+| Past mistakes to avoid | `memory/learnings/mistakes.md` |
 | Code map | `agent-os/agents/<role>/PROJECT_MAP.md` |
 | When to dispatch which agent | `AGENTS.md` § Agent dispatch |
 | How to do X | Search `agent-os/skills/` |

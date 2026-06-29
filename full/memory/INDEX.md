@@ -5,9 +5,9 @@ Quick map of what's in `memory/`. Your AI agent reads this at session start to k
 ## Live state (read these first every session)
 
 - [`STATE.md`](STATE.md) — current priorities, blockers, status
-- [`learnings.md`](learnings.md) — mistakes (don't repeat), wins (remember), patterns
+- [`learnings/`](learnings/) — behavior-changing rules: `mistakes` (don't repeat) · `patterns` · `decisions` · `constraints` · `archive`. `mistakes.md` is the hot file, read it every session
 - [`USER.md`](USER.md.template) — optional: user's personal context, preferences, work patterns
-- [`clients/`](clients/) — per-client state files
+- [`projects/`](projects/) — per-project / per-client live state files
 
 ## Knowledge layers (Karpathy)
 
@@ -15,9 +15,10 @@ Quick map of what's in `memory/`. Your AI agent reads this at session start to k
 - [`wiki/`](wiki/) — topic pages, cross-linked. See [`wiki/INDEX.md`](wiki/INDEX.md) for catalog
 - [`outputs/`](outputs/) — generated deliverables (specs, research, drafts, reports)
 
-## Time series
+## Time series + capture
 
 - [`daily/`](daily/) — append-only event log per day. Latest day = freshest context
+- [`inbox/`](inbox/) — un-triaged capture + the `/mine-learnings` candidate queue (`learnings-candidates.md`)
 
 ## How to navigate
 
@@ -26,7 +27,7 @@ For a specific question, read in this order:
 1. `STATE.md` — what are we focused on right now?
 2. `wiki/INDEX.md` → relevant `wiki/*.md` page — what do we already know?
 3. Latest `daily/*.md` — what happened recently?
-4. `clients/<client>.md` if it's a client question
+4. `projects/<client>.md` if it's a client question
 5. `outputs/` if it's a deliverable that already exists
 
 Don't re-read everything. The index files (this one + `wiki/INDEX.md`) are the only "always read" pages. Drill from there.

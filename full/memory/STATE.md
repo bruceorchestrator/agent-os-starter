@@ -23,10 +23,10 @@ Target: ~2 months out (mid-July 2026). Gates:
 
 ## Active design partners
 
-See `clients/*.md` for full state. Quick summary:
+See `projects/*.md` for full state. Quick summary:
 
-- **Bluefin Coffee** — pilot, PDF export ask, see [[clients/bluefin-coffee]]
-- **Tessera Studio** — active, renewing 2026-06-01, see [[clients/tessera-studio]]
+- **Bluefin Coffee** — pilot, PDF export ask, see [[projects/bluefin-coffee]]
+- **Tessera Studio** — active, renewing 2026-06-01, see [[projects/tessera-studio]]
 
 ## Team
 
