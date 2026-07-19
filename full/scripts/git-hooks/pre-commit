@@ -3,7 +3,7 @@
 #
 # - HARD-BLOCKS staged files containing obvious PII patterns (configurable below)
 # - HARD-BLOCKS staleness drift on current-state files (memory/STATE.md,
-#   memory/clients/*.md, agent-os/agents/*/PROJECT_MAP.md) via check-staleness.py
+#   memory/projects/*.md, agent-os/agents/*/PROJECT_MAP.md) via check-staleness.py
 #
 # Activate once per checkout:
 #   git config core.hooksPath scripts/git-hooks

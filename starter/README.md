@@ -16,14 +16,15 @@ memory/
   outputs/          — generated deliverables (specs, reports)
   raw/              — immutable source dumps
 agent-os/
-  skills/           — 4 core memory-loop workflows
+  skills/           — 5 core memory-loop workflows
     morning/        — load context, propose plan
     endday/         — save session, log corrections
     ingest/         — URL/file/text → raw/ + wiki/ + daily/
     lint/           — wiki health check (script + semantic)
+    review-learnings/ — curate learnings.md when it grows
 ```
 
-18 files total. The example data is from a fictional product called **Acme Notes**. Replace it with your own as you go.
+19 files total. The example data is from a fictional product called **Acme Notes**. Replace it with your own as you go.
 
 ## How to use it
 
@@ -35,7 +36,7 @@ agent-os/
 
 ## Why skills matter
 
-Without `/morning`, `/endday`, `/ingest`, `/lint` — `memory/` is just static folders. The skills are what make the wiki actually update over time as you work. They're the minimum needed for the memory loop to function.
+Without `/morning`, `/endday`, `/ingest`, `/lint`, `/review-learnings` — `memory/` is just static folders. The skills are what make the wiki actually update over time as you work. They're the minimum needed for the memory loop to function.
 
 ## When you outgrow this
 
@@ -43,7 +44,7 @@ Simple Mode is for projects where one or two people work with one or two AI agen
 
 - Multi-domain agent state (separate context per role: backend-dev, frontend-dev, etc.)
 - Behavioral rules (auto-loaded policies, e.g. testing rules, cost-aware LLM routing)
-- 5 more advanced skills (`/create-spec`, `/call-debrief`, `/web-researcher`, `/create`, `/swarm`)
+- 6 more advanced skills (`/mine-learnings`, `/create-spec`, `/call-debrief`, `/web-researcher`, `/create`, `/swarm`)
 - Hooks (runtime enforcement: session-start auto-load, commit memory reminders)
 - Pre-commit governance (staleness checks, source-of-truth discipline)
 

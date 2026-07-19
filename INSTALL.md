@@ -10,9 +10,9 @@ For users who prefer not to use the AI-paste flow ([`INSTALL_PROMPT.md`](INSTALL
 
 ## Choose mode
 
-**Simple Mode** — minimum viable. 18 files. Pure Karpathy wiki + minimal live state (single `learnings.md`). 5-minute setup.
+**Simple Mode** — minimum viable. 19 files. Karpathy wiki + minimal live state (single `learnings.md`) + 5 core skills. 5-minute setup.
 
-**Advanced Mode** — complete framework. ~60 files. Adds rules, agents, skills, hooks, governance, a lifecycle-split `learnings/` directory, and the `/mine-learnings` trace→learnings loop. 15-minute setup.
+**Advanced Mode** — complete framework. ~65 files. Adds rules, agents, skills, hooks, governance, a lifecycle-split `learnings/` directory, and the `/mine-learnings` trace→learnings loop. 15-minute setup.
 
 If unsure → start Simple. Graduate later by copying `full/agent-os/` over your existing setup.
 
@@ -31,7 +31,7 @@ Then edit:
 4. `your-project/memory/daily/` — delete the example day, your AI will create today's entry on first session
 5. Open the project in your AI agent — it auto-loads `AGENTS.md` (or `CLAUDE.md`)
 
-That's it. 12 files, ~5 minutes.
+That's it. 19 files, ~5 minutes. The `agent-os/skills/` folder (morning / endday / ingest / lint / review-learnings) comes along with the copy and needs no edits.
 
 ## Advanced Mode install
 

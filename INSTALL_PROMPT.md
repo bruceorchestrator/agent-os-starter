@@ -10,8 +10,8 @@ Reference repo: **https://github.com/bruceorchestrator/agent-os-starter**
 
 Fetch its contents (via web fetch, git clone, or your equivalent). Two modes ship there:
 
-- **`starter/`** (Simple Mode) — 18 files: `memory/` (single `learnings.md`) + `AGENTS.md`/`CLAUDE.md`
-- **`full/`** (Advanced Mode) — ~60 files: adds `agent-os/{rules,agents,skills,hooks}/` + `adapters/` + `scripts/`, splits `learnings.md` into a `learnings/` directory, and adds the `/mine-learnings` trace→learnings loop
+- **`starter/`** (Simple Mode) — 19 files: `memory/` (single `learnings.md`) + `AGENTS.md`/`CLAUDE.md` + `agent-os/skills/` (5 core memory-loop skills: `morning` / `endday` / `ingest` / `lint` / `review-learnings`)
+- **`full/`** (Advanced Mode) — ~65 files: adds `agent-os/{rules,agents,skills,hooks}/` + `adapters/` + `scripts/`, splits `learnings.md` into a `learnings/` directory, and adds the `/mine-learnings` trace→learnings loop
 
 Both build on Karpathy's LLM wiki pattern. Advanced Mode adds operational state, agent state, and governance.
 
@@ -35,7 +35,7 @@ Before installing, look at the current directory.
    - Still show a short Step 3 plan and wait for confirmation before writing files
    - In Step 4 customization: skip project/team/client/priority items entirely
    - Reframe `memory/STATE.md` from "Current State / Priorities" to **"Current Focus"** — what you're learning, exploring, or thinking about right now. No team table, no blockers, no priority levels — just a few bullets describing your current attention.
-   - Keep all of: `wiki/`, `raw/`, `outputs/`, `daily/`, `learnings.md`, `AGENTS.md`/`CLAUDE.md`
+   - Keep all of: `wiki/`, `raw/`, `outputs/`, `daily/`, `learnings.md`, `AGENTS.md`/`CLAUDE.md`, `agent-os/skills/` (the 5 core skills — `/ingest` and `/lint` are the heart of a personal wiki)
    - Do NOT install Advanced Mode (`agent-os/rules/`, `agents/`, `hooks/`, `scripts/git-hooks/`) — those are project-ops oriented and will feel heavy here
    - User's role is "LLM-wiki gardener", not "project owner"
 
@@ -102,6 +102,7 @@ Files to install:
   - memory/{outputs,raw}/README.md
   - AGENTS.md (canonical schema)
   - CLAUDE.md (mirror for Claude Code)
+  - agent-os/skills/ (5 core memory-loop skills: morning / endday / ingest / lint / review-learnings)
   [Advanced only:]
   - memory/learnings/ (split: mistakes/patterns/decisions/constraints/archive + README) — replaces the single learnings.md
   - memory/inbox/learnings-candidates.md (the /mine-learnings review queue)

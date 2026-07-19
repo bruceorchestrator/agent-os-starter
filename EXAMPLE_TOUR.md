@@ -55,7 +55,7 @@ AI:  [auto-loads memory/STATE.md, learnings/mistakes.md, wiki/INDEX.md,
      Start with #1?
 ```
 
-The AI knows the project. It read `STATE.md` (priorities), `learnings/` (don't repeat past mistakes), `wiki/` (durable knowledge about sync, billing, design partners), and the latest `daily/` (recent events). Zero context dump from you.
+The AI knows the project. It read `STATE.md` (priorities), learnings (don't repeat past mistakes), `wiki/` (durable knowledge about sync, billing, design partners), and the latest `daily/` (recent events). Zero context dump from you.
 
 ---
 
@@ -65,20 +65,24 @@ The AI knows the project. It read `STATE.md` (priorities), `learnings/` (don't r
 starter/
 ├── AGENTS.md                ← your AI reads this first (the schema)
 ├── CLAUDE.md                ← mirror for Claude Code
-└── memory/
-    ├── STATE.md             ← current priorities, "Last updated" date
-    ├── learnings.md         ← MISTAKES (don't repeat) + WINS + PATTERNS
-    ├── daily/2026-05-03.md  ← today: actions, decisions, insights, tomorrow
-    ├── wiki/
-    │   ├── INDEX.md
-    │   ├── sync-engine.md   ← cross-linked topic page
-    │   ├── billing-flows.md
-    │   └── design-partner-program.md
-    ├── outputs/README.md    ← where generated specs/research go
-    └── raw/README.md        ← immutable source dumps
+├── memory/
+│   ├── STATE.md             ← current priorities, "Last updated" date
+│   ├── learnings.md         ← MISTAKES (don't repeat) + WINS + PATTERNS
+│   ├── daily/2026-05-03.md  ← today: actions, decisions, insights, tomorrow
+│   ├── wiki/
+│   │   ├── INDEX.md
+│   │   ├── sync-engine.md   ← cross-linked topic page
+│   │   ├── billing-flows.md
+│   │   └── design-partner-program.md
+│   ├── outputs/README.md    ← where generated specs/research go
+│   └── raw/README.md        ← immutable source dumps
+└── agent-os/skills/         ← 5 core memory-loop workflows
+    ├── morning/ · endday/   ← load context / save session
+    ├── ingest/ · lint/      ← wiki grows / wiki stays healthy
+    └── review-learnings/    ← curate learnings.md when it grows
 ```
 
-**12 files.** Drop them into your project, replace Acme Notes data with yours, your AI has memory. That's it.
+**19 files.** Drop them into your project, replace Acme Notes data with yours, your AI has memory. That's it.
 
 ---
 
@@ -129,7 +133,7 @@ full/
 
 Plus `adapters/` for tool-specific wiring (Cursor, Aider, Windsurf) and `scripts/` for governance (staleness check at commit time, `install.sh`, `mine_learnings.py` + tests).
 
-**~60 files total.** More moving parts, but each piece earns its place.
+**~65 files total.** More moving parts, but each piece earns its place.
 
 ---
 
