@@ -19,9 +19,13 @@ Each adapter here is a thin shim that says "read AGENTS.md/CLAUDE.md for the sch
 
 ## Bundled adapters
 
+- `claude-code/.claude/settings.json` — wires the `SessionStart` and `PostToolUse` hooks. Without it `agent-os/hooks/session-start.sh` never runs and `memory/` is never auto-loaded, so the schema is read but the project state is not. The installer skips this file if you already have a `settings.json` — merge the hooks block from `agent-os/hooks/README.md` by hand in that case.
 - `cursor/.cursor/rules/main.mdc` — Cursor rule with `alwaysApply: true`
 - `aider/CONVENTIONS.md` — Aider conventions doc
 - `windsurf/.windsurfrules` — Windsurf rules
+
+Note that hooks are a Claude Code feature. Other tools read the schema and memory files on
+demand, but get no automatic session-start injection.
 
 ## Wiring up
 

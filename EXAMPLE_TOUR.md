@@ -133,7 +133,7 @@ full/
 
 Plus `adapters/` for tool-specific wiring (Cursor, Aider, Windsurf) and `scripts/` for governance (staleness check at commit time, `install.sh`, `mine_learnings.py` + tests).
 
-**~65 files total.** More moving parts, but each piece earns its place.
+**~70 files total.** More moving parts, but each piece earns its place.
 
 ---
 

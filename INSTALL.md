@@ -12,7 +12,7 @@ For users who prefer not to use the AI-paste flow ([`INSTALL_PROMPT.md`](INSTALL
 
 **Simple Mode** — minimum viable. 19 files. Karpathy wiki + minimal live state (single `learnings.md`) + 5 core skills. 5-minute setup.
 
-**Advanced Mode** — complete framework. ~65 files. Adds rules, agents, skills, hooks, governance, a lifecycle-split `learnings/` directory, and the `/mine-learnings` trace→learnings loop. 15-minute setup.
+**Advanced Mode** — complete framework. ~70 files. Adds rules, agents, skills, hooks, governance, a lifecycle-split `learnings/` directory, and the `/mine-learnings` trace→learnings loop. 15-minute setup.
 
 If unsure → start Simple. Graduate later by copying `full/agent-os/` over your existing setup.
 
@@ -79,7 +79,7 @@ Replace those with your stack. Everything else (rules, skills, hooks, schema) is
 
 | Tool | Auto-loaded | Extra files |
 |---|---|---|
-| Claude Code | `CLAUDE.md` | optional: `.claude/settings.json` for hooks (template in `agent-os/hooks/README.md`) |
+| Claude Code | `CLAUDE.md` | `.claude/settings.json` — written by `install.sh`, wires the session-start hook. Skipped if you already have one; merge the block from `agent-os/hooks/README.md` |
 | Codex / OpenCode | `AGENTS.md` | none |
 | Cursor | `.cursor/rules/main.mdc` (manual or via `install.sh`) | references `AGENTS.md` |
 | Aider | `CONVENTIONS.md` (manual or via `install.sh`) | also `aider --read AGENTS.md` |

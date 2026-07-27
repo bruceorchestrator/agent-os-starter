@@ -145,6 +145,14 @@ for tool in "${detected_tools[@]}"; do
     claude-code)
       copy_file_safe "$SOURCE_ROOT/CLAUDE.md" "$TARGET_ROOT/CLAUDE.md"
       copy_file_safe "$SOURCE_ROOT/AGENTS.md" "$TARGET_ROOT/AGENTS.md"
+      # Without this the SessionStart hook never fires and memory/ is never auto-loaded.
+      # An existing settings.json is never clobbered — copy_file_safe asks, default skip.
+      if [ -e "$TARGET_ROOT/.claude/settings.json" ]; then
+        echo "  .claude/settings.json exists — leaving it alone."
+        echo "  To enable auto-loading, merge the hooks block from agent-os/hooks/README.md"
+      else
+        copy_file_safe "$SOURCE_ROOT/adapters/claude-code/.claude/settings.json" "$TARGET_ROOT/.claude/settings.json"
+      fi
       ;;
     codex)
       copy_file_safe "$SOURCE_ROOT/AGENTS.md" "$TARGET_ROOT/AGENTS.md"
@@ -187,7 +195,10 @@ echo ""
 echo "Install complete. Next steps:"
 echo "  1. Verify memory loads: bash scripts/context.sh"
 echo "     (should print STATE + INDEX + learnings + latest daily without errors)"
-echo "  2. Open the project in your AI tool — it should auto-load AGENTS.md/CLAUDE.md"
-echo "  3. Replace the Acme Notes example content with your real project context"
-echo "  4. Optional: rename memory/USER.md.template → memory/USER.md and fill in"
-echo "  5. Optional: rename agent-os/rules/identity.md.template → identity.md to define your AI's persona"
+echo "  2. Check the session cost: bash scripts/context_budget.sh"
+echo "     (must say the context is UNDER budget — past the cap your harness drops it"
+echo "      entirely and silently, and memory/ stops reaching the agent)"
+echo "  3. Open the project in your AI tool — it should auto-load AGENTS.md/CLAUDE.md"
+echo "  4. Replace the Acme Notes example content with your real project context"
+echo "  5. Optional: rename memory/USER.md.template → memory/USER.md and fill in"
+echo "  6. Optional: rename agent-os/rules/identity.md.template → identity.md to define your AI's persona"

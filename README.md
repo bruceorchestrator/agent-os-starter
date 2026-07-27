@@ -23,7 +23,7 @@ The pattern is his. The packaging is one way to use it on real projects.
 
 | | Simple Mode | Advanced Mode |
 |---|---|---|
-| Files | 19 | ~65 |
+| Files | 19 | ~70 |
 | Memory | single `memory/learnings.md` (MISTAKES / WINS / PATTERNS in one file) | `memory/learnings/` split by lifecycle (`mistakes` / `patterns` / `decisions` / `constraints` / `archive`) + `inbox/` candidate queue |
 | Includes | `memory/`, `AGENTS.md`/`CLAUDE.md`, 5 core skills (`morning`, `endday`, `ingest`, `lint`, `review-learnings`) | + more skills incl. **`/mine-learnings`** (trace → learnings loop), `agent-os/{rules,agents,hooks}/`, `adapters/`, `scripts/` (incl. `mine_learnings.py` + tests) |
 | Best for | Solo + 1–2 collaborators, getting started, personal knowledge wiki | Multi-person, multi-domain, governance needed |

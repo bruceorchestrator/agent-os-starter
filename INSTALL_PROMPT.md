@@ -11,7 +11,7 @@ Reference repo: **https://github.com/bruceorchestrator/agent-os-starter**
 Fetch its contents (via web fetch, git clone, or your equivalent). Two modes ship there:
 
 - **`starter/`** (Simple Mode) — 19 files: `memory/` (single `learnings.md`) + `AGENTS.md`/`CLAUDE.md` + `agent-os/skills/` (5 core memory-loop skills: `morning` / `endday` / `ingest` / `lint` / `review-learnings`)
-- **`full/`** (Advanced Mode) — ~65 files: adds `agent-os/{rules,agents,skills,hooks}/` + `adapters/` + `scripts/`, splits `learnings.md` into a `learnings/` directory, and adds the `/mine-learnings` trace→learnings loop
+- **`full/`** (Advanced Mode) — ~70 files: adds `agent-os/{rules,agents,skills,hooks}/` + `adapters/` + `scripts/`, splits `learnings.md` into a `learnings/` directory, and adds the `/mine-learnings` trace→learnings loop
 
 Both build on Karpathy's LLM wiki pattern. Advanced Mode adds operational state, agent state, and governance.
 
