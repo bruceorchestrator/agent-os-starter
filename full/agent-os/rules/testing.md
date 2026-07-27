@@ -1,3 +1,16 @@
+---
+description: When to write tests, what they must cover, how they run. Loads when touching a test file.
+paths:
+  - "**/test_*.py"
+  - "**/*_test.py"
+  - "**/tests/**/*"
+  - "**/*.test.ts"
+  - "**/*.test.tsx"
+  - "**/*.spec.ts"
+  - "**/*.spec.tsx"
+  - "**/__tests__/**/*"
+---
+
 # Testing Rules
 
 When to write tests, what they must cover, how they run.

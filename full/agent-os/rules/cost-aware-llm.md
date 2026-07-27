@@ -1,3 +1,13 @@
+---
+description: LLM API cost discipline — model routing, retry, prompt caching. Loads when touching code that calls a model.
+paths:
+  - "**/*llm*"
+  - "**/*_ai*"
+  - "**/ai_*"
+  - "**/prompts/**/*"
+  - "**/agents/**/*.py"
+---
+
 # Cost-Aware LLM Pipeline
 
 Patterns for controlling LLM API costs. Model routing, retry, prompt caching. Stack-agnostic — works with any provider (Anthropic, OpenAI, Google, gateway services, etc.).

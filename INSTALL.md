@@ -52,7 +52,8 @@ The installer:
 After install:
 
 1. **Verify:** `bash scripts/context.sh` — should print STATE + INDEX without errors
-2. **Replace example data** with your project's reality:
+2. **Check the budget:** `bash scripts/context_budget.sh` — shows what every session costs you (schema + always-on rules + session context) and warns if the session context has outgrown the harness cap. Re-run it whenever you add a rule or grow `memory/`. Past the cap the harness drops the *whole* payload and injects a short preview instead, so your project state stops loading with no error — this check is the only thing that surfaces it
+3. **Replace example data** with your project's reality:
    - `memory/STATE.md` — your priorities
    - `memory/learnings/` — empty the Acme example entries from `mistakes.md` / `patterns.md` / `decisions.md` / `constraints.md` / `archive.md` (keep the format/intro blocks). Leave `inbox/learnings-candidates.md` as the empty queue
    - `memory/projects/` — delete Bluefin/Tessera, add yours (or leave empty)
@@ -60,10 +61,10 @@ After install:
    - `memory/outputs/specs/` and `outputs/research/` — delete the Acme samples
    - `memory/daily/` — delete the Acme example day
    - `agent-os/agents/backend-dev/PROJECT_MAP.md` — replace with your stack/dirs
-3. **Try the trace→learnings loop:** `python scripts/mine_learnings.py --no-llm` mines your latest session transcript for candidate learnings (zero setup; review via `/mine-learnings`)
-4. **Optional persona:** rename `agent-os/rules/identity.md.template` → `identity.md`, customize
-5. **Optional personal context:** rename `memory/USER.md.template` → `USER.md`, fill in
-6. **Open in your AI agent** — verify `AGENTS.md` is auto-loaded
+4. **Try the trace→learnings loop:** `python scripts/mine_learnings.py --no-llm` mines your latest session transcript for candidate learnings (zero setup; review via `/mine-learnings`)
+5. **Optional persona:** rename `agent-os/rules/identity.md.template` → `identity.md`, customize
+6. **Optional personal context:** rename `memory/USER.md.template` → `USER.md`, fill in
+7. **Open in your AI agent** — verify `AGENTS.md` is auto-loaded
 
 ## Customizing for your stack
 

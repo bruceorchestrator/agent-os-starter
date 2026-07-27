@@ -125,12 +125,14 @@ copy_dir_safe "$SOURCE_ROOT/agent-os" "$TARGET_ROOT/agent-os" "agent-os"
 echo "Installing scripts/..."
 mkdir -p "$TARGET_ROOT/scripts/git-hooks"
 copy_file_safe "$SOURCE_ROOT/scripts/context.sh"                    "$TARGET_ROOT/scripts/context.sh"
+copy_file_safe "$SOURCE_ROOT/scripts/context_budget.sh"             "$TARGET_ROOT/scripts/context_budget.sh"
 copy_file_safe "$SOURCE_ROOT/scripts/mine_learnings.py"            "$TARGET_ROOT/scripts/mine_learnings.py"
 copy_file_safe "$SOURCE_ROOT/scripts/test_mine_learnings.py"       "$TARGET_ROOT/scripts/test_mine_learnings.py"
 copy_file_safe "$SOURCE_ROOT/scripts/git-hooks/pre-commit"          "$TARGET_ROOT/scripts/git-hooks/pre-commit"
 copy_file_safe "$SOURCE_ROOT/scripts/git-hooks/check-staleness.py"  "$TARGET_ROOT/scripts/git-hooks/check-staleness.py"
 copy_file_safe "$SOURCE_ROOT/scripts/git-hooks/README.md"           "$TARGET_ROOT/scripts/git-hooks/README.md"
 chmod +x "$TARGET_ROOT/scripts/context.sh" 2>/dev/null
+chmod +x "$TARGET_ROOT/scripts/context_budget.sh" 2>/dev/null
 chmod +x "$TARGET_ROOT/scripts/git-hooks/check-staleness.py" 2>/dev/null
 chmod +x "$TARGET_ROOT/scripts/git-hooks/pre-commit" 2>/dev/null
 

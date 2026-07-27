@@ -112,7 +112,7 @@ Files to install:
   - agent-os/agents/<role>/ (4-file state per domain agent)
   - agent-os/hooks/ (session-start, commit-memory-reminder)
   - adapters/<your-tool>/
-  - scripts/context.sh, scripts/mine_learnings.py (+ tests), scripts/git-hooks/
+  - scripts/context.sh, scripts/context_budget.sh, scripts/mine_learnings.py (+ tests), scripts/git-hooks/
 
 Files I'll preserve (won't touch):
   - [list anything pre-existing that I'll leave alone]
@@ -218,9 +218,18 @@ Run: `bash scripts/context.sh`
 
 Expected output: STATE + INDEX + learnings + latest daily + recent commits, no errors.
 
+Then run: `bash scripts/context_budget.sh`
+
+This reports what every session costs (schema + always-on rules + session context) and
+whether the session context still fits the harness cap. Past that cap the harness replaces
+the WHOLE payload with a short preview, so project state stops loading and nothing errors --
+this check is the only thing that surfaces it. Re-run after adding rules or growing memory/.
+
 If errors:
 - `memory/STATE.md` missing → check Step 4
-- `Permission denied` → `chmod +x scripts/context.sh`
+- `Permission denied` → `chmod +x scripts/context.sh scripts/context_budget.sh`
+- context_budget reports OVER BUDGET → lower the `head -N` limits in scripts/context.sh,
+  or give a heavy rule a `paths:` frontmatter key so it loads only when relevant
 - Other → diagnose and fix before proceeding
 
 ### Step 6 — Wire up the tool adapter
@@ -270,6 +279,7 @@ Customizations applied:
 
 Verification:
   ✓ scripts/context.sh runs cleanly
+  ✓ scripts/context_budget.sh reports the session context under budget
   ✓ AGENTS.md at root, AI should auto-load on next session
   [Advanced: ✓ git hooks wired]
 

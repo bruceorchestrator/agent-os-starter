@@ -1,3 +1,16 @@
+---
+description: Pre-edit file-size gate and the single-responsibility audit that decides a split. Loads when touching source code.
+paths:
+  - "**/*.py"
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/*.jsx"
+  - "**/*.go"
+  - "**/*.rb"
+  - "**/*.rs"
+---
+
 # File Size Triggers — Architectural Hygiene
 
 Per-change quality rules catch ugly diffs but miss long-term file growth. This rule fires on the **size of the target file BEFORE the edit**, regardless of how clean the individual change is. Goal: prevent god-files (the kind reviewers flag months later).
