@@ -32,6 +32,9 @@ cd "$REPO_ROOT" 2>/dev/null
 
 # Conservative target. Raise only if you have measured your harness's real cap.
 BUDGET="${CONTEXT_BUDGET_BYTES:-8192}"
+# The hook adds a preamble before the harness sees this, so aim below the cap, not at it.
+PREAMBLE_RESERVE="${CONTEXT_PREAMBLE_RESERVE:-700}"
+EFFECTIVE=$((BUDGET - PREAMBLE_RESERVE))
 
 CLIENT_NAMESPACE="$1"
 FULL_MODE="false"
@@ -124,7 +127,7 @@ if [ "$FULL_MODE" != "true" ]; then
   for victim in "SEC_INDEX:memory/INDEX.md" \
                 "SEC_WIKI:memory/wiki/INDEX.md" \
                 "SEC_DAILY:memory/daily/"; do
-    [ "$(printf '%s' "$CONTEXT" | wc -c)" -le "$BUDGET" ] && break
+    [ "$(printf '%s' "$CONTEXT" | wc -c)" -le "$EFFECTIVE" ] && break
     var="${victim%%:*}"; hint="${victim##*:}"
     [ -z "${!var}" ] && continue
     eval "$var=''"
@@ -135,7 +138,7 @@ if [ "$FULL_MODE" != "true" ]; then
 
   # Still over: what remains is load-bearing, so say so instead of pretending it fits.
   SIZE="$(printf '%s' "$CONTEXT" | wc -c | tr -d ' ')"
-  if [ "$SIZE" -gt "$BUDGET" ]; then
+  if [ "$SIZE" -gt "$EFFECTIVE" ]; then
     CONTEXT="$CONTEXT
 !! WARNING: this context is ${SIZE}B, over the ${BUDGET}B budget. Your harness may drop it
 !! entirely and inject only a short preview. Trim memory/STATE.md or lower the head -N

@@ -79,11 +79,22 @@ if [ -n "$RULES_DIR" ]; then
 fi
 
 # ---------- 3. session context ----------
+# Measure what the HARNESS receives, not what context.sh prints: the SessionStart hook
+# wraps the digest in a preamble first, and that wrapper counts against the same cap.
 echo "## SessionStart hook payload"
 ctx_bytes=0
 if [ -f scripts/context.sh ]; then
-  ctx_bytes=$(bash scripts/context.sh 2>/dev/null | wc -c | tr -d ' ')
-  row "scripts/context.sh output" "$ctx_bytes"
+  script_bytes=$(bash scripts/context.sh 2>/dev/null | wc -c | tr -d ' ')
+  ctx_bytes=$script_bytes
+  row "scripts/context.sh output" "$script_bytes"
+  if [ -f agent-os/hooks/session-start.sh ]; then
+    hook_bytes=$(CLAUDE_PROJECT_DIR="$REPO_ROOT" bash agent-os/hooks/session-start.sh 2>/dev/null \
+      | python3 -c 'import json,sys; print(len(json.load(sys.stdin)["hookSpecificOutput"]["additionalContext"].encode()))' 2>/dev/null || true)
+    if [ -n "$hook_bytes" ]; then
+      ctx_bytes=$hook_bytes
+      row "+ hook preamble = what the harness gets" "$hook_bytes"
+    fi
+  fi
   if [ "$ctx_bytes" -le "$BUDGET" ]; then
     echo "  STATUS: OK — under the ${BUDGET} B budget, loads into context"
   else
